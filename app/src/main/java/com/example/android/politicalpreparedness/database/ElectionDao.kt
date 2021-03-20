@@ -20,11 +20,11 @@ interface ElectionDao {
 
     //COMPLETE: Add select single election query
     @Query("SELECT * FROM election_table WHERE id = :electionId")
-    suspend fun getElectionById(electionId: Long) : Election?
+    suspend fun getElectionById(electionId: Int) : Election?
 
     //COMPLETE: Add delete query
     @Query("DELETE FROM election_table WHERE id = :electionId")
-    suspend fun deleteElection(electionId: Long)
+    suspend fun deleteElection(electionId: Int)
 
     //COMPLETE: Add clear query
     @Query("DELETE FROM election_table")
