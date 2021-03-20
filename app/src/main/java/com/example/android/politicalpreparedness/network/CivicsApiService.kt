@@ -15,7 +15,6 @@ import retrofit2.http.Query
 import java.util.*
 
 private const val BASE_URL = "https://www.googleapis.com/civicinfo/v2/"
-private const val API_KEY = "AIzaSyA87NEkOL-cO_lEifYUM9T-QsFKDRz1xrs"
 
 // COMPLETE: Add adapters for Java Date and custom adapter ElectionAdapter (included in project)
 private val moshi = Moshi.Builder()
