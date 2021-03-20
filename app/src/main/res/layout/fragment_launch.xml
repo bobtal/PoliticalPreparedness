@@ -13,7 +13,7 @@
             android:id="@+id/ballot_logo_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/upcoming_elections_button"
+            app:layout_constraintBottom_toTopOf="@id/upcomingButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
 
         <!-- COMPLETE: Add Button to navigate to upcoming elections. -->
         <Button
-            android:id="@+id/find_representatives_button"
+            android:id="@+id/representativeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/normal_margin"
@@ -37,7 +37,7 @@
 
         <!-- COMPLETE: Add Button to navigate to representatives. -->
         <Button
-            android:id="@+id/upcoming_elections_button"
+            android:id="@+id/upcomingButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/normal_margin"
@@ -46,7 +46,7 @@
             android:background="@color/colorPrimaryDark"
             android:text="@string/upcoming_elections"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/find_representatives_button"
+            app:layout_constraintBottom_toTopOf="@id/representativeButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
