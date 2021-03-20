@@ -1,16 +1,54 @@
 package com.example.android.politicalpreparedness.election
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.android.politicalpreparedness.database.ElectionDao
+import com.example.android.politicalpreparedness.network.CivicsApi
+import com.example.android.politicalpreparedness.network.models.Election
+import kotlinx.coroutines.launch
 
-//TODO: Construct ViewModel and provide election datasource
-class ElectionsViewModel: ViewModel() {
+//COMPLETE: Construct ViewModel and provide election datasource
+class ElectionsViewModel(
+        val database: ElectionDao
+): ViewModel() {
 
-    //TODO: Create live data val for upcoming elections
+    //COMPLETE: Create live data val for upcoming elections
+    private val _upcomingElections = MutableLiveData<List<Election>>()
+    val upcomingElections : LiveData<List<Election>>
+        get() = _upcomingElections
 
-    //TODO: Create live data val for saved elections
+    //COMPLETE: Create live data val for saved elections
+    private val _savedElections = MutableLiveData<List<Election>>()
+    val savedElections : LiveData<List<Election>>
+        get() = _savedElections
 
-    //TODO: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
 
-    //TODO: Create functions to navigate to saved or upcoming election voter info
+    //COMPLETE: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
+    init {
+        getSavedElectionsFromDatabase()
+        getUpcomingElectionsFromNetwork()
+    }
 
+    fun getSavedElectionsFromDatabase() {
+        viewModelScope.launch { _savedElections.value = database.getAllElections() }
+    }
+
+    fun getUpcomingElectionsFromNetwork() {
+        viewModelScope.launch {
+            _upcomingElections.value = CivicsApi.retrofitService.getElections().elections
+        }
+    }
+
+    //COMPLETE: Create functions to navigate to saved or upcoming election voter info
+    private val _navigateToElection = MutableLiveData<Int>()
+    val navigateToElection : LiveData<Int>
+        get() = _navigateToElection
+
+    fun onElectionClicked(electionId: Int) {
+        _navigateToElection.value = electionId
+    }
+
+    fun onElectionNavigated() {
+        _navigateToElection.value = null
+    }
 }
