@@ -30,6 +30,8 @@ class DetailFragment : Fragment() {
 
         //TODO: Establish button listeners for field and location search
 
+        //TODO: Remove return null
+        return null
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -48,6 +50,9 @@ class DetailFragment : Fragment() {
 
     private fun isPermissionGranted() : Boolean {
         //TODO: Check if permission is already granted and return (true = granted, false = denied/other)
+
+        //TODO: Remove return false
+        return false
     }
 
     private fun getLocation() {
