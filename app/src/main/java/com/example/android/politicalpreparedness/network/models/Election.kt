@@ -11,3 +11,14 @@ data class Election(
         @ColumnInfo(name = "electionDay")val electionDay: Date,
         @Embedded(prefix = "division_") @Json(name="ocdDivisionId") val division: Division
 )
+
+fun ElectionResponse.asDomainAndDatabaseModel() : Array<Election> {
+    return elections.map {
+        Election(
+                id = it.id,
+                name = it.name,
+                electionDay = it.electionDay,
+                division = it.division
+        )
+    }.toTypedArray()
+}
