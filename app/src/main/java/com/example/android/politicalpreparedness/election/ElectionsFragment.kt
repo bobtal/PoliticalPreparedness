@@ -8,12 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
 import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
 import com.example.android.politicalpreparedness.election.adapter.ElectionListener
 import com.example.android.politicalpreparedness.network.jsonadapter.ElectionAdapter
+import com.example.android.politicalpreparedness.network.models.Election
 
 class ElectionsFragment: Fragment() {
 
@@ -41,9 +43,17 @@ class ElectionsFragment: Fragment() {
         binding.viewModel = viewModel
 
         //TODO: Link elections to voter info
+        viewModel.navigateToElection.observe(viewLifecycleOwner, Observer { election ->
+            election?.let {
+                this.findNavController().navigate(
+                        ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
+                                election.id, election.division))
+            }
+            viewModel.onElectionNavigated()
+        })
 
         //TODO: Initiate recycler adapters
-        val clickListener = {electionId : Int -> viewModel.onElectionClicked(electionId)}
+        val clickListener = {election : Election -> viewModel.onElectionClicked(election)}
         upcomingElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
         binding.upcomingElectionsRecycler.adapter = upcomingElectionsAdapter
         savedElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
