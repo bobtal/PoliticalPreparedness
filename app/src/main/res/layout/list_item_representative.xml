@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/representative_photo_image"
+            android:id="@+id/representative_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/photo_of_the_representative"
@@ -33,7 +33,7 @@
             android:layout_marginTop="8dp"
             tools:text="Office name"
             android:text="@{representative.office.name}"
-            app:layout_constraintStart_toEndOf="@+id/representative_photo_image"
+            app:layout_constraintStart_toEndOf="@+id/representative_photo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -57,18 +57,18 @@
             app:layout_constraintTop_toBottomOf="@+id/representative_name_text" />
 
         <ImageView
-            android:id="@+id/facebook_image"
+            android:id="@+id/facebook_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/twitter_image"
+            app:layout_constraintEnd_toStartOf="@+id/twitter_icon"
             app:srcCompat="@drawable/ic_facebook"
             android:contentDescription="@string/facebook_logo" />
 
         <ImageView
-            android:id="@+id/twitter_image"
+            android:id="@+id/twitter_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="4dp"
@@ -79,13 +79,13 @@
             android:contentDescription="@string/twitter_logo" />
 
         <ImageView
-            android:id="@+id/web_image"
+            android:id="@+id/www_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/facebook_image"
+            app:layout_constraintEnd_toStartOf="@+id/facebook_icon"
             app:srcCompat="@drawable/ic_www"
             android:contentDescription="@string/www_logo" />
 

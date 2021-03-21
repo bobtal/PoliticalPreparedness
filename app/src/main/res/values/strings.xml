@@ -16,6 +16,8 @@
     <string name="facebook_logo">Facebook logo</string>
     <string name="twitter_logo">Twitter logo</string>
     <string name="www_logo">World Wide Web logo</string>
+    <string name="permission_denied_explanation">We need your permission to be able to fill in your address for you</string>
+    <string name="retry">Retry</string>
 
     <!-- TODO: Add necessary string values -->
 
