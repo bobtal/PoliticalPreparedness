@@ -20,6 +20,9 @@ class ElectionsFragment: Fragment() {
     //TODO: Declare ViewModel
     private lateinit var viewModel: ElectionsViewModel
 
+    private lateinit var upcomingElectionsAdapter: ElectionListAdapter
+    private lateinit var savedElectionsAdapter: ElectionListAdapter
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -34,14 +37,17 @@ class ElectionsFragment: Fragment() {
         val binding: FragmentElectionBinding =
                 DataBindingUtil.inflate(
                         inflater, R.layout.fragment_election, container, false)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         //TODO: Link elections to voter info
 
         //TODO: Initiate recycler adapters
         val clickListener = {electionId : Int -> viewModel.onElectionClicked(electionId)}
-        val upcomingElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
-        val savedElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
+        upcomingElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
+        binding.upcomingElectionsRecycler.adapter = upcomingElectionsAdapter
+        savedElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
+        binding.savedElectionsRecycler.adapter = savedElectionsAdapter
 
         //TODO: Populate recycler adapters
         viewModel.upcomingElections.observe(viewLifecycleOwner, Observer {
@@ -60,5 +66,9 @@ class ElectionsFragment: Fragment() {
     }
 
     //TODO: Refresh adapters when fragment loads
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        upcomingElectionsAdapter.notifyDataSetChanged()
+        savedElectionsAdapter.notifyDataSetChanged()
+    }
 }
