@@ -16,7 +16,7 @@ interface ElectionDao {
 
     //COMPLETE: Add select all election query
     @Query("SELECT * FROM election_table")
-    fun getAllElections() : List<Election>
+    suspend fun getAllElections() : List<Election>
 
     //COMPLETE: Add select single election query
     @Query("SELECT * FROM election_table WHERE id = :electionId")
