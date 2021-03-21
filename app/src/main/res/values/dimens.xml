@@ -4,5 +4,6 @@
 
     <!-- TODO: Add necessary dimension values -->
     <dimen name="normal_margin">8dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
 
 </resources>
