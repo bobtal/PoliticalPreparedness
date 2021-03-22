@@ -19,27 +19,27 @@ import com.example.android.politicalpreparedness.network.models.Election
 
 class ElectionsFragment: Fragment() {
 
-    //TODO: Declare ViewModel
+    //COMPLETE: Declare ViewModel
     private lateinit var viewModel: ElectionsViewModel
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        //TODO: Add ViewModel values and create ViewModel
+        //COMPLETE: Add ViewModel values and create ViewModel
         val application = requireNotNull(this.activity).application
         val dataSource = ElectionDatabase.getInstance(application).electionDao
         val viewModelFactory = ElectionsViewModelFactory(dataSource)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ElectionsViewModel::class.java)
 
-        //TODO: Add binding values
+        //COMPLETE: Add binding values
         val binding: FragmentElectionBinding =
                 DataBindingUtil.inflate(
                         inflater, R.layout.fragment_election, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        //TODO: Link elections to voter info
+        //COMPLETE: Link elections to voter info
         viewModel.navigateToElection.observe(viewLifecycleOwner, Observer { election ->
             election?.let {
                 this.findNavController().navigate(
@@ -49,14 +49,14 @@ class ElectionsFragment: Fragment() {
             viewModel.onElectionNavigated()
         })
 
-        //TODO: Initiate recycler adapters
+        //COMPLETE: Initiate recycler adapters
         val clickListener = {election : Election -> viewModel.onElectionClicked(election)}
         val upcomingElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
         binding.upcomingElectionsRecycler.adapter = upcomingElectionsAdapter
         val savedElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
         binding.savedElectionsRecycler.adapter = savedElectionsAdapter
 
-        //TODO: Populate recycler adapters
+        //COMPLETE: Populate recycler adapters
         viewModel.upcomingElections.observe(viewLifecycleOwner, Observer {
             it?.let {
                 upcomingElectionsAdapter.submitList(it)
@@ -72,7 +72,7 @@ class ElectionsFragment: Fragment() {
         return binding.root
     }
 
-    //TODO: Refresh adapters when fragment loads
+    //COMPLETE: Refresh adapters when fragment loads
     // not needed?
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
