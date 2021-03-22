@@ -31,6 +31,13 @@ class RepresentativeViewModel: ViewModel() {
         }
     }
 
+    init{
+        // init an empty address (with Alabama state to match the spinner default starting value)
+        // to avoid a crash in case user clicks on find my representatives
+        // without adding any address info
+        _address.value = Address("", "", "", "Alabama", "")
+    }
+
     /**
      *  The following code will prove helpful in constructing a representative from the API. This code combines the two nodes of the RepresentativeResponse into a single official :
 
