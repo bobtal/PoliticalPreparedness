@@ -22,9 +22,6 @@ class ElectionsFragment: Fragment() {
     //TODO: Declare ViewModel
     private lateinit var viewModel: ElectionsViewModel
 
-    private lateinit var upcomingElectionsAdapter: ElectionListAdapter
-    private lateinit var savedElectionsAdapter: ElectionListAdapter
-
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -54,9 +51,9 @@ class ElectionsFragment: Fragment() {
 
         //TODO: Initiate recycler adapters
         val clickListener = {election : Election -> viewModel.onElectionClicked(election)}
-        upcomingElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
+        val upcomingElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
         binding.upcomingElectionsRecycler.adapter = upcomingElectionsAdapter
-        savedElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
+        val savedElectionsAdapter = ElectionListAdapter(ElectionListener(clickListener))
         binding.savedElectionsRecycler.adapter = savedElectionsAdapter
 
         //TODO: Populate recycler adapters
@@ -76,9 +73,10 @@ class ElectionsFragment: Fragment() {
     }
 
     //TODO: Refresh adapters when fragment loads
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        upcomingElectionsAdapter.notifyDataSetChanged()
-        savedElectionsAdapter.notifyDataSetChanged()
-    }
+    // not needed?
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        upcomingElectionsAdapter.notifyDataSetChanged()
+//        savedElectionsAdapter.notifyDataSetChanged()
+//    }
 }
