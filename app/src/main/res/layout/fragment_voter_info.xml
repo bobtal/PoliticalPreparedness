@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- TODO: Add data binding node for Voter Info ViewModel -->
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.election.VoterInfoViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -77,6 +82,12 @@
             app:layout_constraintStart_toStartOf="@id/election_date" />
 
         <!-- TODO: Add button to save election to Room -->
+        <Button
+            android:id="@+id/save_election_button"
+            style="@style/button_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

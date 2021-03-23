@@ -101,23 +101,19 @@
         <!-- COMPLETE: Add visual styling and label -->
         <Button
             android:id="@+id/button_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/normal_margin"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/white"
             android:text="@string/find_my_representatives"
+            style="@style/button_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/zip" />
 
         <!-- COMPLETE: Add visual styling and content -->
         <Button
             android:id="@+id/button_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/normal_margin"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/white"
             android:text="@string/use_my_location"
+            style="@style/button_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_search" />
 
         <!-- COMPLETE: Add visual styling and content -->

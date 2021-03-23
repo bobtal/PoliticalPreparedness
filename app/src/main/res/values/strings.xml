@@ -18,6 +18,8 @@
     <string name="www_logo">World Wide Web logo</string>
     <string name="permission_denied_explanation">We need your permission to be able to fill in your address for you</string>
     <string name="retry">Retry</string>
+    <string name="follow_election">Follow election</string>
+    <string name="unfollow_election">Unfollow election</string>
 
     <!-- TODO: Add necessary string values -->
 
