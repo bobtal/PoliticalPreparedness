@@ -44,9 +44,9 @@ class ElectionsFragment: Fragment() {
             election?.let {
                 this.findNavController().navigate(
                         ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
-                                election.id, election.division))
+                                it.id, it.division))
+                viewModel.onElectionNavigated()
             }
-            viewModel.onElectionNavigated()
         })
 
         //COMPLETE: Initiate recycler adapters
@@ -73,10 +73,8 @@ class ElectionsFragment: Fragment() {
     }
 
     //COMPLETE: Refresh adapters when fragment loads
-    // not needed?
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        upcomingElectionsAdapter.notifyDataSetChanged()
-//        savedElectionsAdapter.notifyDataSetChanged()
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getSavedElectionsFromDatabase()
+    }
 }
