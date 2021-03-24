@@ -78,8 +78,10 @@ class DetailFragment : Fragment() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         //COMPLETE: Handle location permission result to get location on permission granted
-        if (requestCode == REQUEST_LOCATION_PERMISSION) {
-
+        if (requestCode == REQUEST_LOCATION_PERMISSION &&
+                grantResults.isNotEmpty() &&
+                grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            getLocation()
         } else {
             showSnackbar()
         }
@@ -110,6 +112,7 @@ class DetailFragment : Fragment() {
             LocationServices.getFusedLocationProviderClient(requireContext())
                     .lastLocation.addOnSuccessListener { location ->
                         viewModel.setAddressFromGeoLocation(geoCodeLocation(location))
+                        viewModel.getRepresentatives(viewModel.address.value.toString())
                     }
         }
         else {
