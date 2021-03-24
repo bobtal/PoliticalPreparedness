@@ -40,8 +40,8 @@ class ElectionsViewModel(
     }
 
     //COMPLETE: Create functions to navigate to saved or upcoming election voter info
-    private val _navigateToElection = MutableLiveData<Election>()
-    val navigateToElection : LiveData<Election>
+    private val _navigateToElection = MutableLiveData<Election?>()
+    val navigateToElection : LiveData<Election?>
         get() = _navigateToElection
 
     fun onElectionClicked(election: Election) {
