@@ -10,11 +10,19 @@
             type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
     </data>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <!-- TODO: Add motion scene to hide form on vertical scroll. -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/representative_motion_layout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:minHeight="80dp"
+        app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed"
         app:layoutDescription="@xml/fragment_representative_scene">
 
         <!-- COMPLETE: Add visual styling and content -->
@@ -115,6 +123,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_search" />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <!-- COMPLETE: Add visual styling and content -->
         <TextView
@@ -123,7 +136,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_location"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="@string/my_representatives"/>
 
         <!-- COMPLETE: Add Representatives RecyclerView -->
@@ -149,5 +162,7 @@
             app:layout_constraintTop_toBottomOf="@id/representative_title"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
