@@ -19,6 +19,6 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <!-- TODO: Add necessary styles -->
+    <!-- COMPLETE: Add necessary styles -->
 
 </resources>
