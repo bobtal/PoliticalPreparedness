@@ -10,20 +10,17 @@
             type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <!-- TODO: Add motion scene to hide form on vertical scroll. -->
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/representative_motion_layout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:minHeight="80dp"
-        app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed"
         app:layoutDescription="@xml/fragment_representative_scene">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/form">
 
         <!-- COMPLETE: Add visual styling and content -->
         <TextView
@@ -123,11 +120,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_search" />
-    </androidx.constraintlayout.motion.widget.MotionLayout>
-        </com.google.android.material.appbar.AppBarLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:id="@+id/representatives"
+            app:layout_constraintTop_toBottomOf="@id/form"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- COMPLETE: Add visual styling and content -->
         <TextView
@@ -163,6 +165,6 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
